@@ -6,7 +6,7 @@ of observing certain bilayer thicknesses in each phase.
 Those approximations form a 2 component mixture model that we fit to mixed samples,
 infering the fraction of each sample in each phase. 
 
-Data comes from processed imagery. """
+Data comes from processed imagery. Code was written by N. Thakkar and added to by C. Cornell"""
 
 ## For file paths, etc.
 import os
