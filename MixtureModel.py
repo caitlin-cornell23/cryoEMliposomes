@@ -26,6 +26,7 @@ plt.rcParams["xtick.major.width"] = 1.0
 plt.rcParams["ytick.major.width"] = 1.0
 plt.rcParams["lines.linewidth"] = 2.0
 
+
 ## Set some colors as well, used in the plots
 ## throughout.
 light_blue = "#90AFC5"
