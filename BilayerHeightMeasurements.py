@@ -9,6 +9,7 @@ are determined, the script calculates the difference between a pixel on the inne
 on the outer leaflet and chooses the minimum distance. The final height measurements are averaged by
 taking a rolling average over two pixel values. This information is stored in a dataframe."""
 
+
 import os
 import matplotlib.pyplot as plt
 import numpy as np
