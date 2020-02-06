@@ -18,11 +18,6 @@ import cv2
 
 # Canny filter
 from skimage.feature import canny
-# Denoise 
-from skimage.restoration import denoise_nl_means, estimate_sigma
-# Equalize histogram
-from skimage.exposure import equalize_hist
-
 
 ## Set global matplotlib parameters
 plt.rcParams["font.family"] = "Serif"
@@ -81,7 +76,7 @@ def TemplateArray(Image):
 	a mapped template array in polar coordinates."""
 
 	## Input the image resolution in nm per pixel 
-	res = 0.191 # on TF20, 0.254
+	res = 0.191 # on TF20 = 0.254 and on Glacios = 0.191
 
 	## Create an XY array of the same shape as the image
 	x,y = np.arange(Image.shape[1]), np.arange(Image.shape[0])
@@ -167,40 +162,8 @@ if __name__ == '__main__':
 		cv2.imshow("Cropped Image", imCrop)
 		cv2.waitKey(0)
 
-		## Enhance the contrast by equalizing the histogram
-		# imCrop = cv2.equalizeHist(imCrop)
-
-		# ## Estimate the noise standard deviation from the image for Denoising
-		# sigma_est = np.mean(estimate_sigma(imCrop, multichannel=False))
-		# print(f"estimated noise standard deviation = {sigma_est}")
-
-		# ## Denoise the image using a slow algorith.
-		# ## Spatial Gaussian weighting is applied to patches when computing distances.
-		# ## H is the cut-off distance. A higher H means more permissive of accepting patches.
-		# ## It results in a smoother image, but can blur features. 
-		# Denoise = denoise_nl_means(imCrop, patch_size = 5, patch_distance = 6,
-		#  						   h=1.2 * sigma_est, fast_mode=False, multichannel=False)
-
-		# ## Equalize the histogram of the denoised image
-		# ImageEnhanced = equalize_hist(Denoise)
-
 		## Perform a Canny Filter algorithm
 		Filtered = InteractiveCanny(imCrop)
-
-		# figs, axes = plt.subplots(1, 4, figsize=(28,10))
-
-		# axes[0].imshow(imCrop)
-		# axes[0].set_title("Contrast enhanced")
-
-		# axes[1].imshow(Denoise)
-		# axes[1].set_title("Denoised")
-
-		# axes[2].imshow(ImageEnhanced)
-		# axes[2].set_title("Image Contrast again")
-
-		# axes[3].imshow(Filtered)
-		# axes[3].set_title("Edge Detected")
-		# plt.show()
 
 		## Create a dataframe containing r and theta information about the edge
 		## detected in the Canny filter
