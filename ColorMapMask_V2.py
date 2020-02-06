@@ -209,11 +209,13 @@ def GetKDEs():
 	## Concatenate each of the category dataframes
 	Lo_df = pd.concat(Lo_df, axis=0)
 	Lo_thickness = Lo_df["optim_thickness"] 
-	Lo_thickness = Lo_thickness[(Lo_thickness >= 2) & (Lo_thickness <= 4)]
+	## Cut out non-physical values
+	Lo_thickness = Lo_thickness[(Lo_thickness >= 2) & (Lo_thickness <= 6)] 
 
 	Ld_df = pd.concat(Ld_df, axis=0)
 	Ld_thickness = Ld_df["optim_thickness"]
-	Ld_thickness = Ld_thickness[(Ld_thickness >= 2) & (Ld_thickness <= 4)]
+	## Cut out non-physical values
+	Ld_thickness = Ld_thickness[(Ld_thickness >= 2) & (Ld_thickness <= 6)]
 
 
 	## Compute KDEs for Height, Lo, and Ld
