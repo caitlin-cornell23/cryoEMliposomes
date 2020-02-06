@@ -78,7 +78,7 @@ def SamplePosterior(alpha,posterior,num_samples=5000):
 
 if __name__ == "__main__":
 
-	## Get the data from CSV prepared by Caitlin
+	## Get the data from CSV prepared from BilayerHeightMeasurements
 	print("\nGetting the data...")
 	data_dir = os.path.join("C:\\Users\\caitl\\Documents\\PythonScripts\\TEM","mixture1")
 	Lo_samples = pd.read_csv(os.path.join(data_dir,"Lo.csv"),
